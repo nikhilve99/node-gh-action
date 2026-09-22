@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_ENV: ${{ vars.APP_ENV }}
+      DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
 
     steps:
       - name: Check out repository
@@ -45,6 +46,14 @@ jobs:
 
       - name: Show test environment
         run: 'echo "Running tests for environment: $APP_ENV"'
+
+      - name: Confirm demo secret availability
+        run: |
+          if [ -n "$DEMO_SECRET" ]; then
+            echo "Demo secret is available."
+          else
+            echo "Demo secret is missing."
+          fi
 
       - name: Run tests
         run: npm test
