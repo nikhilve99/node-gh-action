@@ -3,6 +3,8 @@ name: NodeJS CI
 on:
   push:
   pull_request:
+    branches:
+      - main
 
 jobs:
   test:
