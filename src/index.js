@@ -1,5 +1,5 @@
 function getGreeting() {
-  return "Hello from GitHub Actions";
+  return "Hello from GitHub Actions.";
 }
 
 module.exports = { getGreeting };
