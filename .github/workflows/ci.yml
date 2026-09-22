@@ -46,6 +46,7 @@ jobs:
 
   build:
     needs: test
+    if: always()  
     runs-on: ubuntu-latest
 
     steps:
