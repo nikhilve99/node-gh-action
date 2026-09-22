@@ -28,6 +28,8 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
+    env:
+      APP_ENV: ${{ vars.APP_ENV }}
 
     steps:
       - name: Check out repository
@@ -40,6 +42,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Show test environment
+        run: echo "Running tests for environment: $APP_ENV"
 
       - name: Run tests
         run: npm test
