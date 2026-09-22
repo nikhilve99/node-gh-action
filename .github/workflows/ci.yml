@@ -63,3 +63,12 @@ jobs:
 
       - name: Run build
         run: npm run build
+
+  failure-notification:
+    needs: [lint, test, build]
+    if: failure()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Report CI failure
+        run: echo "One or more CI jobs failed."
