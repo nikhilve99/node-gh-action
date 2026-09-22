@@ -76,4 +76,4 @@ jobs:
 
     steps:
       - name: Report CI failure
-        run: echo "One or more CI jobs failed."
+        run: echo "one or more CI jobs failed."
