@@ -44,7 +44,7 @@ jobs:
         run: npm ci
 
       - name: Show test environment
-        run: echo "Running tests for environment: $APP_ENV"
+        run: 'echo "Running tests for environment: $APP_ENV"'
 
       - name: Run tests
         run: npm test
