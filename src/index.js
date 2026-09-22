@@ -7,3 +7,4 @@ function getVersion() {
 }
 
 module.exports = { getGreeting, getVersion };
+!
