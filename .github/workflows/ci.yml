@@ -109,6 +109,23 @@ jobs:
           docker push "$IMAGE_URI:$IMAGE_TAG"
           docker push "$IMAGE_URI:latest"
 
+          REPOSITORY_NAME="${IMAGE_URI##*/}"
+          SHA_DIGEST=$(aws ecr describe-images \
+            --repository-name "$REPOSITORY_NAME" \
+            --image-ids imageTag="$IMAGE_TAG" \
+            --query 'imageDetails[0].imageDigest' \
+            --output text)
+          LATEST_DIGEST=$(aws ecr describe-images \
+            --repository-name "$REPOSITORY_NAME" \
+            --image-ids imageTag=latest \
+            --query 'imageDetails[0].imageDigest' \
+            --output text)
+
+          if [ "$SHA_DIGEST" != "$LATEST_DIGEST" ]; then
+            echo "ECR tag digest mismatch: $IMAGE_TAG=$SHA_DIGEST, latest=$LATEST_DIGEST" >&2
+            exit 1
+          fi
+
   failure-notification:
     needs: [lint, test, build]
     if: failure()
