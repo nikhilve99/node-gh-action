@@ -105,8 +105,9 @@ jobs:
           IMAGE_URI: 051826698957.dkr.ecr.ap-south-1.amazonaws.com/node-gh-action
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t "$IMAGE_URI:$IMAGE_TAG" .
+          docker build -t "$IMAGE_URI:$IMAGE_TAG" -t "$IMAGE_URI:latest" .
           docker push "$IMAGE_URI:$IMAGE_TAG"
+          docker push "$IMAGE_URI:latest"
 
   failure-notification:
     needs: [lint, test, build]
