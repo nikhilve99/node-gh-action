@@ -1,0 +1,30 @@
+# Dependencies and package manager logs
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Git and local tooling
+.git
+.github
+.agents
+.codex
+
+# Tests and generated output
+test
+tests
+coverage
+.nyc_output
+dist
+build
+
+# Local configuration and environment files
+.env
+.env.*
+*.local
+
+# Documentation and container definitions
+README*
+Dockerfile*
+.dockerignore

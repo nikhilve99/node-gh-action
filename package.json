@@ -4,6 +4,7 @@
   "description": "A minimal Node.js project for learning GitHub Actions.",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "lint": "node --check src/index.js",
     "build": "node -e \"console.log('Build complete')\"",
     "test": "node --test"
